@@ -41,6 +41,7 @@ class MainActivity : Activity() {
             .also { adapter ->
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 gridSizeSpinner?.adapter = adapter
+                gridSizeSpinner?.setSelection(1)
             }
         matchSizeSpinner = findViewById<Spinner>(R.id.match_size_spinner)
         ArrayAdapter.createFromResource(this, R.array.match_size_options, android.R.layout.simple_spinner_item)
@@ -102,7 +103,7 @@ class MainActivity : Activity() {
 
         grid = gridSize[0].toString().toInt()
         matchesToFind = matchSize[0].toString().toInt()
-        scoreToWin = grid.times(grid).div(2).minus(2)
+        scoreToWin = grid.times(grid).div(matchesToFind).minus(2)
         this.setup()
     }
 
